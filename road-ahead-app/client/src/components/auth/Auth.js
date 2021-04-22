@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { UserAuthContext } from "../../context/UserAuthProvider";
-
+import "./authPage.css"
 export const Auth = () => {
 
 const { login, signup, authErrorReset, errMsg } =  useContext(UserAuthContext)
@@ -23,23 +23,19 @@ const { login, signup, authErrorReset, errMsg } =  useContext(UserAuthContext)
   }
 
   return (
-    <>
+    <div id="auth">
       {!toggle ? (
-        <div>
+        <div id="login">
           <Login handleSubmit={handleLogin} errMsg={errMsg} />
           <button onClick={toggleForm} >Not yet a user</button>
-          <h1>
-          </h1>
         </div>
       ) : (
-        <div>
+        <div id="signup">
           <Signup handleSubmit={handleSignup} errMsg={errMsg} />
           <button onClick={toggleForm}>Already a user</button>
-          <h1>
-          </h1>
         </div>
       )}
       <p style={{ color: "red" }}>{errMsg}</p>
-    </>
+    </div>
   );
 };
