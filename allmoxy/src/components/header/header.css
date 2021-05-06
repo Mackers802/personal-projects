@@ -1,0 +1,8 @@
+#header{
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem .5rem
+}

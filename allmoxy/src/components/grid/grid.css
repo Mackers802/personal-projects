@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0
+}
+
+#grid{
+    background-color: cornflowerblue;
+}
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-left: 2rem;
+}
+
+#tr-header{
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    text-align: center;
+    border: 1px solid blue;
+}
+
+#th-body{
+    display: block;
+    justify-content: center;
+    width: 95%;
+    text-align: center;
+    border: 1px solid blue;
+    border-top: 0px;
+}
+
+
+/* --------- th ------- */
+#th-id{
+    width: 5vw;
+    border-right: 1px solid lightblue;
+}
+
+#th-title{
+    width: 15vw;
+    border-right: 1px solid lightblue;
+}
+
+#th-description{
+    width: 15vw;
+    border-right: 1px solid lightblue;
+}
+
+#th-price{
+    width: 15vw;
+    border-right: 1px solid lightblue;
+}
+
+#th-quantity{
+    width: 15vw;
+    border-right: 1px solid lightblue;
+}
+
+#th-image{
+    width: 150px;
+}
+
+/* --------- td ------- */
+#td-id{
+    width: 5vw;
+    border-right: 1px solid lightblue;
+}
+
+#td-title{
+    width: 15vw;
+    border-right: 1px solid lightblue;
+}
+
+#td-description{
+    width: 15vw;
+    border-right: 1px solid lightblue;
+}
+
+#td-price{
+    width: 15vw;
+    border-right: 1px solid lightblue;
+}
+
+#td-quantity{
+    width: 15vw;
+    border-right: 1px solid lightblue;
+}
+
+
+
+#td-image > div > img{
+    width: 125px;
+    margin: 0;
+    padding: 0
+}
+
+#form{
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+}
+
+#form-inputs-div{
+    margin: 2rem;
+}
+
+#form-action-div{
+    margin: 2rem;
+}
+
+.input{
+    justify-content: space-between;
+    height: 2rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+    background-color: lightgray;
+}
+

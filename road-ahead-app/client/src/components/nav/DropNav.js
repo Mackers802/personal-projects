@@ -17,13 +17,13 @@ export const DropNav = () =>{
 
     return (
         <div id="dropNav">
+             <Link to="/Directions">Directions</Link>
+             <Link to="/Weather">Weather</Link>
              <Link to="/GasStations">Gas Stations</Link>
              <Link to="/ChargingStations">Charging Stations</Link>
-             <Link to="/Directions">Directions</Link>
+             <Link to="/Resturants">Resturants</Link>
              <Link to="/Hotels">Hotels</Link>
              <Link to="/Recreation">Recreation</Link>
-             <Link to="/Resturants">Resturants</Link>
-             <Link to="/Weather">Weather</Link>
         </div>
     )
 }
