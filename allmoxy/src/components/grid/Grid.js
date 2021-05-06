@@ -31,14 +31,14 @@ export const Grid = () => {
 
   const renderItem = (item, index) => {
     return (
-      <tr key={index}>
+      <tr id="tr" key={index}>
         <td id="td-id">{index}</td>
         <td id="td-title">{item.title}</td>
-        <td id="td-description">{item.description}</td>
         <td id="td-price">{item.price}</td>
         <td id="td-quantity">{item.quantity}</td>
+        <td id="td-description">{item.description}</td>
         <td id="td-image">
-                <img src={item.image} alt={item.title} />
+            <img id="td-image-tag" src={item.image} alt={item.title} />
         </td>
       </tr>
     );
@@ -84,9 +84,9 @@ export const Grid = () => {
             <tr id="tr-header">
               <th id="th-id">ID</th>
               <th id="th-title">Title</th>
-              <th id="th-description">Description</th>
               <th id="th-price">Price</th>
               <th id="th-quantity">Quantity</th>
+              <th id="th-description">Description</th>
               <th id="th-image">Image</th>
             </tr>
             {/* </thead> */}
