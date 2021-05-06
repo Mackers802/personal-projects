@@ -43,19 +43,19 @@ export const Grid = () => {
     }
 
     const remove = (item) => {
-      console.log(item)
+      console.log(item.id)
       deleteItem(item._id)
       console.log("deleteItem")
     } 
 
     const edit = (item) => {
-      console.log(item)
-      editItem(item._id)
-      console.log("deleteItem")
+      console.log(inputs)
+      console.log(item._id)
+      editItem(inputs, item._id)
     } 
     // const [selected, setSelected] = useState();
 
-  const renderItem = (item, index) => {
+  const renderItem = (item, index, _id) => {
     index = index+1
     return (
       <tr id="tr" key={index}>
@@ -68,8 +68,8 @@ export const Grid = () => {
             <img id="td-image-tag" src={item.image} alt={item.title} />
         </td>
         <div>
-          <button id="td-delete-button" onClick={remove}>X</button>
-          <button id="td-edit-button"   onClick={edit}>Edit</button>
+          <button id="td-delete-button" onClick={() => remove(item)}>X</button>
+          <button id="td-edit-button"   onClick={() => edit(item)}>Edit</button>
         </div>
       </tr>
     );
