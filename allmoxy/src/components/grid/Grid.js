@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "../grid/grid.css";
 import dataFile from "../../data/dataFile";
 import { Container, Table } from "react-bootstrap";
+
 export const Grid = () => {
     const initInputs = {
         title: "Add Title",
@@ -23,7 +24,8 @@ export const Grid = () => {
     console.log("selected", selected);
   }
 
-  const addItem = () => {
+  const addItem = (e) => {
+      e.preventDefault()
       console.log("Add Item")
   }
 
@@ -36,9 +38,7 @@ export const Grid = () => {
         <td id="td-price">{item.price}</td>
         <td id="td-quantity">{item.quantity}</td>
         <td id="td-image">
-            <div>
                 <img src={item.image} alt={item.title} />
-            </div>
         </td>
       </tr>
     );
@@ -82,7 +82,7 @@ export const Grid = () => {
           <Table id="table">
             {/* <thead id="thead"> */}
             <tr id="tr-header">
-                <th id="th-id">ID</th>
+              <th id="th-id">ID</th>
               <th id="th-title">Title</th>
               <th id="th-description">Description</th>
               <th id="th-price">Price</th>
