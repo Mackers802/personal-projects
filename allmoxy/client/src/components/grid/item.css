@@ -1,0 +1,5 @@
+#editForm{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(185, 176, 93);
+}

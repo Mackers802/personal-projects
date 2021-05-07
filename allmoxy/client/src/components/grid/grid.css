@@ -72,30 +72,35 @@ html{
     font-size: 10px;
     min-width: 5vw;
     padding: 0;
+    border: none;
 }
 
 #th-title{
     font-size: 10px;
     min-width: 10vw;
     padding: 0;
+    border: none;
 }
 
 #th-description{
     font-size: 10px;
     min-width: 15vw;
     padding: 0;
+    border: none;
 }
 
 #th-price{
     font-size: 10px;
     min-width: 10vw;
     padding: 0;
+    border: none;
 }
 
 #th-quantity{
     font-size: 10px;
     min-width: 15vw;
     padding: 0;
+    border: none;
 }
 
 #th-image{
@@ -104,6 +109,7 @@ html{
     min-width: 150px;
     padding: 0;
     max-width: 250px;
+    border: none;
 }
 
 /* --------- td ------- */

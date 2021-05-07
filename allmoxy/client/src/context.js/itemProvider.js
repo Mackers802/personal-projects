@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import dataFile from "../data/dataFile";
+// import dataFile from "../data/dataFile";
 
 export const ItemProviderContext = React.createContext();
 
@@ -54,6 +54,7 @@ export const ItemProvider = (props) => {
   }
 
   function editItem(inputs, _id) {
+    console.log(_id)
     axios
       .put(`/item/${_id}`, inputs)
       .then((res) =>
