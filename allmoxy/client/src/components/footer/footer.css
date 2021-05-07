@@ -1,8 +1,9 @@
 #footer{
-    background-color:violet;
+    background-color: rgb(222, 219, 224);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 2rem .5rem
+    padding: 2rem .5rem;
+    margin-top: 5%
 }

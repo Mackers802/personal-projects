@@ -53,7 +53,7 @@ export const Item = (props) => {
             <td id="td-quantity">{item.quantity}</td>
             <td id="td-description">{item.description}</td>
             <td id="td-image">
-              <img id="td-image-tag" src={item.image} alt={item.title} />
+              <img id="td-image-tag" src={item.image} alt={item.description} />
             </td>
               <button id="td-delete-button" onClick={() => remove(item)}>
                 X
@@ -71,35 +71,35 @@ export const Item = (props) => {
                 onChange={onChangeItem}
                 type="text"
                 name="title"
-                placeholder="Title"
+                placeholder={item.title}
                 className="input"
               />
               <input
                 onChange={onChangeItem}
                 type="number"
                 name="price"
-                placeholder="Price"
+                placeholder={item.price}
                 className="input"
               />
               <input
                 onChange={onChangeItem}
                 type="number"
                 name="quantity"
-                placeholder="Quantity"
+                placeholder={item.quantity}
                 className="input"
               />
               <input
                 onChange={onChangeItem}
                 type="text"
                 name="description"
-                placeholder="Description"
+                placeholder={item.description}
                 className="input"
               />
               <input
                 onChange={onChangeItem}
                 type="text"
                 name="image"
-                placeholder="Image Url"
+                placeholder={item.image}
                 className="input"
               />
             </div>

@@ -9,22 +9,22 @@ const itemSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
+    // required: true,
     default: "",
   },
   price: {
     type: String,
-    required: true,
+    // required: true,
     default: "",
   },
   quantity: {
     type: String,
-    required: true,
+    // required: true,
     default: "",
   },
   image: {
     type: String,
-    required: false,
+    // required: false,
     default: "",
   },
 });

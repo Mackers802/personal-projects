@@ -73,7 +73,7 @@ export const ItemProvider = (props) => {
         getAllItems,
         newItem,
         deleteItem,
-        editItem,
+        editItem
       }}
     >
       {props.children}

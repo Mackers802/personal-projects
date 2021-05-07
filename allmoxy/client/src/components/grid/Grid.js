@@ -4,7 +4,7 @@ import { Container, Table } from "react-bootstrap";
 import { ItemProviderContext } from "../../context.js/itemProvider";
 import { Item } from "./Item";
 
-export const Grid = () => {
+export const Grid = (props) => {
   const { items, getAllItems, newItem, editItem, deleteItem } = useContext(
     ItemProviderContext
   );
@@ -12,22 +12,6 @@ export const Grid = () => {
   useEffect(() => {
     getAllItems();
   }, []);
-
-  // const [data, setData ] = useState(items)
-  // const [sortType, setSortType] = useState('titleA-Z');
-  // useEffect(() => {
-  //   const sortArray = type => {
-  //     const types = {
-  //       title: "titleA-Z" || "titleZ-A",
-  //       price: "priceHigh" || "priceLow"
-  //     };
-  //     const sortProperty = types[type];
-  //     const sorted = [...items].sort((a,b) => b[sortProperty] - a[sortProperty])
-  //     setData(sorted)
-  //   };
-  //   sortArray(sortType)
-  //   // getAllItems();
-  // }, [sortType]);
 
   const initInputs = {
     title: "",
@@ -49,19 +33,17 @@ export const Grid = () => {
   const add = (e) => {
     e.preventDefault();
     newItem(inputs);
-    setInputs(initInputs);
+    window.location.reload();
+    // getAllItems()
+    // setInputs(initInputs);
   };
 
-  const [selected, setSelected] = useState("hi");
+  const [selected, setSelected] = useState("");
 
   const handleSelect = (e) => {
     const { value } = e.target;
     setSelected(value);
   };
-
-  // const sortedData = items.sort((a,b){
-  //   return
-  // })
 
   const sortedData = items.sort( (a, b) => {
     // console.log("selected", selected)
@@ -89,17 +71,6 @@ export const Grid = () => {
       return b.price - a.price;
     }
   });
-  console.log(sortedData);
-  // return sortedData
-
-  // const renderItem = (item, index, _id) => {
-  //     index = index + 1;
-  //     return (
-  //       <div>
-  //         <Item index={index} item={item} id={_id} edit={editItem} delete={deleteItem} />
-  //       </div>
-  //     );
-  // };
 
   return (
     <div id="grid-container">
@@ -140,7 +111,7 @@ export const Grid = () => {
             placeholder="Image Url"
             className="input"
           />
-          <button class="input" onClick={add}>
+          <button id="add-btn" onClick={add}>
             Add Item
           </button>
         </div>
@@ -150,7 +121,6 @@ export const Grid = () => {
         <Table id="table">
           <thead id="thead">
             <div id="form-action-div">
-              {/* <select id="sort-by" onClick={handleSelect}> */}
               <select id="sort-by" onChange={handleSelect}>
                 <option input="">
                   Sort by
