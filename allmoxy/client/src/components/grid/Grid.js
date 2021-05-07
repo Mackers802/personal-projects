@@ -5,26 +5,26 @@ import { ItemProviderContext } from "../../context.js/itemProvider";
 import { Item } from "./Item"
 
 export const Grid = () => {
-  const { items, getAllItems, newItem, editItem, deleteItem, setItemState } = useContext(
+  const { items, getAllItems, newItem, editItem, deleteItem } = useContext(
     ItemProviderContext
   );
-  const [sortType, setSortType] = useState('titleA-Z');
+
   useEffect(() => {
     getAllItems();
   }, []);
 
+  // const [data, setData ] = useState(items)
+  // const [sortType, setSortType] = useState('titleA-Z');
   // useEffect(() => {
   //   const sortArray = type => {
   //     const types = {
-  //       titleAZ: "titleA-Z",
-  //       titleZA: "titleZ-A",
-  //       priceHigh: "priceHigh",
-  //       priceLow: "priceLow"
+  //       title: "titleA-Z" || "titleZ-A",
+  //       price: "priceHigh" || "priceLow"
   //     };
   //     const sortProperty = types[type];
   //     const sorted = [...items].sort((a,b) => b[sortProperty] - a[sortProperty])
-  //     setItemState(sorted)
-  //   }
+  //     setData(sorted)
+  //   };
   //   sortArray(sortType)
   //   // getAllItems();
   // }, [sortType]);
@@ -122,7 +122,7 @@ export const Grid = () => {
           <thead id="thead">
           <div id="form-action-div">
             {/* <select id="sort-by" name="sort" onClick={handleSelect}> */}
-            <select id="sort-by" name="sort" onChange={(e) => setSortType(e.target.value)}>
+            <select id="sort-by" name="sort" onChange={handleSelect}>
               <option input="" name="sort">Sort by</option>
               <option value="title A-Z" name="sort">Title A-Z</option>
               <option value="title Z-A" name="sort">Title Z-A</option>
