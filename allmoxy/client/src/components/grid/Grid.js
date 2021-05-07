@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./grid.css";
 import { Container, Table } from "react-bootstrap";
 import { ItemProviderContext } from "../../context.js/itemProvider";
-import { Item } from "./Item"
+import { Item } from "./Item";
 
 export const Grid = () => {
   const { items, getAllItems, newItem, editItem, deleteItem } = useContext(
@@ -52,16 +52,45 @@ export const Grid = () => {
     setInputs(initInputs);
   };
 
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState("hi");
 
   const handleSelect = (e) => {
-    const { name, value } = e.target;
-    setSelected((prevSelected) => ({
-      ...prevSelected,
-      [name]: value,
-    }));
-    console.log("selected", selected);
-  }
+    const { value } = e.target;
+    setSelected(value);
+  };
+
+  // const sortedData = items.sort((a,b){
+  //   return
+  // })
+
+  const sortedData = items.sort( (a, b) => {
+    // console.log("selected", selected)
+    if (selected === "") {
+      return items;
+    }
+    if (selected === "titleA-Z") {
+      if (a.title < b.title) {
+        return -1;
+      } else if (a.title > b.title) {
+        return 1;
+      } return 0;
+    }
+    if (selected === "titleZ-A") {
+      if (b.title < a.title) {
+        return -1;
+      } else if (b.title > a.title) {
+        return 1;
+      } return 0;
+    }
+    if (selected === "priceLow") {
+      return a.price - b.price
+    }
+    if (selected === "priceHigh") {
+      return b.price - a.price;
+    }
+  });
+  console.log(sortedData);
+  // return sortedData
 
   // const renderItem = (item, index, _id) => {
   //     index = index + 1;
@@ -120,16 +149,26 @@ export const Grid = () => {
       <Container id="container">
         <Table id="table">
           <thead id="thead">
-          <div id="form-action-div">
-            {/* <select id="sort-by" name="sort" onClick={handleSelect}> */}
-            <select id="sort-by" name="sort" onChange={handleSelect}>
-              <option input="" name="sort">Sort by</option>
-              <option value="title A-Z" name="sort">Title A-Z</option>
-              <option value="title Z-A" name="sort">Title Z-A</option>
-              <option value="priceLow" name="sort">Price Low</option>
-              <option value="priceHigh" name="sort">Price High</option>
-            </select>
-        </div>
+            <div id="form-action-div">
+              {/* <select id="sort-by" onClick={handleSelect}> */}
+              <select id="sort-by" onChange={handleSelect}>
+                <option input="">
+                  Sort by
+                </option>
+                <option value="titleA-Z">
+                  Title A-Z
+                </option>
+                <option value="titleZ-A">
+                  Title Z-A
+                </option>
+                <option value="priceLow">
+                  Price Low-High
+                </option>
+                <option value="priceHigh">
+                  Price High-Low
+                </option>
+              </select>
+            </div>
             <tr id="tr-header">
               <th id="th-id">ID</th>
               <th id="th-title">Title</th>
@@ -139,12 +178,17 @@ export const Grid = () => {
               <th id="th-image">Image</th>
             </tr>
           </thead>
-          <thbody id="th-body">{
-            items.map(
-              (item, index, _id) => (
-                <Item index={index} item={item} id={_id} edit={editItem} delete={deleteItem} />
-              ))}
-              </thbody>
+          <thbody id="th-body">
+            {sortedData.map((item, index, _id) => (
+              <Item
+                index={index}
+                item={item}
+                id={_id}
+                edit={editItem}
+                delete={deleteItem}
+              />
+            ))}
+          </thbody>
         </Table>
       </Container>
     </div>
