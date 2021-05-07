@@ -5,13 +5,29 @@ import { ItemProviderContext } from "../../context.js/itemProvider";
 import { Item } from "./Item"
 
 export const Grid = () => {
-  const { items, getAllItems, newItem, editItem, deleteItem } = useContext(
+  const { items, getAllItems, newItem, editItem, deleteItem, setItemState } = useContext(
     ItemProviderContext
   );
-
+  const [sortType, setSortType] = useState('titleA-Z');
   useEffect(() => {
     getAllItems();
   }, []);
+
+  // useEffect(() => {
+  //   const sortArray = type => {
+  //     const types = {
+  //       titleAZ: "titleA-Z",
+  //       titleZA: "titleZ-A",
+  //       priceHigh: "priceHigh",
+  //       priceLow: "priceLow"
+  //     };
+  //     const sortProperty = types[type];
+  //     const sorted = [...items].sort((a,b) => b[sortProperty] - a[sortProperty])
+  //     setItemState(sorted)
+  //   }
+  //   sortArray(sortType)
+  //   // getAllItems();
+  // }, [sortType]);
 
   const initInputs = {
     title: "",
@@ -36,21 +52,25 @@ export const Grid = () => {
     setInputs(initInputs);
   };
 
-  // const submitChanges = (e, item) => {
-  //   e.preventDefault();
-  //   editItem(inputs, item._id);
+  const [selected, setSelected] = useState();
+
+  const handleSelect = (e) => {
+    const { name, value } = e.target;
+    setSelected((prevSelected) => ({
+      ...prevSelected,
+      [name]: value,
+    }));
+    console.log("selected", selected);
+  }
+
+  // const renderItem = (item, index, _id) => {
+  //     index = index + 1;
+  //     return (
+  //       <div>
+  //         <Item index={index} item={item} id={_id} edit={editItem} delete={deleteItem} />
+  //       </div>
+  //     );
   // };
-
-  // const [selected, setSelected] = useState();
-
-  const renderItem = (item, index, _id) => {
-    index = index + 1;
-    return (
-      <div>
-        <Item index={index} item={item} id={_id} edit={editItem} delete={deleteItem} />
-      </div>
-    );
-  };
 
   return (
     <div id="grid-container">
@@ -91,28 +111,25 @@ export const Grid = () => {
             placeholder="Image Url"
             className="input"
           />
-        </div>
-        <div id="form-action-div">
-          <select class="input" name="sort">
-            <option input="">Sort by</option>
-            <option value="titleA+">Title A-Z</option>
-            <option value="titleZ-">Title Z-A</option>
-            <option value="descriptionT">Description</option>
-            <option value="descriptionF">No Description</option>
-            <option value="priceLow">Price Low</option>
-            <option value="priceHigh">Price High</option>
-            <option value="quantity">Quantity</option>
-            <option value="imageT">Image</option>
-            <option value="imageF">No Image</option>
-          </select>
           <button class="input" onClick={add}>
             Add Item
           </button>
         </div>
       </form>
+
       <Container id="container">
         <Table id="table">
           <thead id="thead">
+          <div id="form-action-div">
+            {/* <select id="sort-by" name="sort" onClick={handleSelect}> */}
+            <select id="sort-by" name="sort" onChange={(e) => setSortType(e.target.value)}>
+              <option input="" name="sort">Sort by</option>
+              <option value="title A-Z" name="sort">Title A-Z</option>
+              <option value="title Z-A" name="sort">Title Z-A</option>
+              <option value="priceLow" name="sort">Price Low</option>
+              <option value="priceHigh" name="sort">Price High</option>
+            </select>
+        </div>
             <tr id="tr-header">
               <th id="th-id">ID</th>
               <th id="th-title">Title</th>
@@ -122,7 +139,12 @@ export const Grid = () => {
               <th id="th-image">Image</th>
             </tr>
           </thead>
-          <thbody id="th-body">{items.map(renderItem)}</thbody>
+          <thbody id="th-body">{
+            items.map(
+              (item, index, _id) => (
+                <Item index={index} item={item} id={_id} edit={editItem} delete={deleteItem} />
+              ))}
+              </thbody>
         </Table>
       </Container>
     </div>
